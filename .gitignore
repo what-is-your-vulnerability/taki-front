@@ -1,0 +1,20 @@
+# 의존성·빌드 결과
+node_modules/
+dist/
+coverage/
+
+# 비밀값: 예시 파일(.env.example)만 커밋한다
+.env
+.env.*
+!.env.example
+*.pem
+
+# 로그·로컬 파일
+*.log
+*.local
+.DS_Store
+
+# 편집기
+.vscode/*
+!.vscode/extensions.json
+.idea/
