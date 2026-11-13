@@ -1,0 +1,56 @@
+# 프론트(Vue 3 + TypeScript + Vite)용. dev·main으로 가는 PR과 dev push에서 린트, 타입 검사, 시험, 빌드를 돌린다.
+# package.json이 아직 없으면(프로젝트 생성 전) 검사를 건너뛰고 통과한다. 필수 체크 이름 "test"를 먼저 만들기 위해서다.
+# 비밀값을 쓰지 않는다. 빌드 결과는 공개되므로 VITE_ 환경변수에도 비밀값을 넣지 않는다.
+name: ci
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # 액션은 태그가 아니라 커밋 SHA로 고정한다(태그는 옮겨질 수 있다).
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: 프론트 프로젝트가 있는지 확인
+        id: project
+        run: |
+          if [ -f package.json ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice title=검사 건너뜀::package.json이 아직 없습니다. 프로젝트를 만든 뒤 검사가 돌아갑니다."
+          fi
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        if: steps.project.outputs.exists == 'true'
+        with:
+          node-version: "22"
+          cache: npm
+      - name: 의존성 설치
+        if: steps.project.outputs.exists == 'true'
+        run: npm ci
+      # 스크립트가 없으면 건너뛴다(--if-present). 프로젝트가 자리 잡으면 lint·type-check·test·build를 모두 두는 것을 권한다.
+      - name: 린트
+        if: steps.project.outputs.exists == 'true'
+        run: npm run lint --if-present
+      - name: 타입 검사
+        if: steps.project.outputs.exists == 'true'
+        run: npm run type-check --if-present
+      - name: 시험
+        if: steps.project.outputs.exists == 'true'
+        run: npm test --if-present
+      - name: 빌드
+        if: steps.project.outputs.exists == 'true'
+        run: npm run build --if-present
