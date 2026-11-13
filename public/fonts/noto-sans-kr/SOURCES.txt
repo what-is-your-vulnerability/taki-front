@@ -1,0 +1,12 @@
+Unmodified Noto Sans KR font files for PDF export.
+Source: https://github.com/notofonts/noto-cjk/tree/main/Sans/SubsetOTF/KR
+License: SIL Open Font License 1.1; full license in LICENSE.txt.
+Retrieved: 2026-11-04
+
+NotoSansKR-Regular.otf
+https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/SubsetOTF/KR/NotoSansKR-Regular.otf
+SHA-256: 69975a0ac8472717870aefeab0a4d52739308d90856b9955313b2ad5e0148d68
+
+NotoSansKR-Bold.otf
+https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/SubsetOTF/KR/NotoSansKR-Bold.otf
+SHA-256: 5a6ceb287ed2fc6cfc6213144ebea68cbd94b20fc9eb873d8486493bf02d9bda
