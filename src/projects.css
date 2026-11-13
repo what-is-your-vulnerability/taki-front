@@ -1,0 +1,77 @@
+/* Project rows compare the same criterion snapshot used by the overview. */
+.project-rows { display: grid; gap: 16px; }
+.project-row { display: grid; grid-template-columns: minmax(240px,1fr) minmax(590px,1.8fr) 64px; gap: 24px; align-items: start; padding: 16px 0; }
+.project-row-info { display: grid; grid-template-columns: 40px minmax(0,1fr); gap: 8px; min-width: 0; }
+.project-row-description { min-width: 0; }
+.project-row-title { display: flex; align-items: center; min-height: 40px; }
+.project-row-title h2 { font-size: 18px; font-weight: 600; line-height: 1.5; }
+.project-row-title:hover h2 { text-decoration: underline; text-underline-offset: 4px; }
+.trace-platform .project-row-path { margin: 4px 0; font-size: 14px; color: var(--platform-muted); overflow-wrap: anywhere; }
+.project-row-description > span { font-size: 14px; color: var(--platform-muted); line-height: 1.5; }
+.project-favorite { min-height: 40px; min-width: 40px; align-self: start; display: grid; place-items: center; color: #707070; border-radius: 3px; }
+.project-favorite:hover { background: #f6f6f6; }
+.project-favorite[aria-pressed=true] { color: var(--platform-ink); }
+.project-favorite[aria-pressed=true] svg { fill: currentColor; }
+.project-row-metrics { display: grid; grid-template-columns: 80px minmax(160px,1.5fr) minmax(80px,1fr) minmax(80px,1fr) 110px; gap: 20px; align-items: start; min-width: 0; }
+.project-row-metric { display: flex; flex-direction: column; align-items: stretch; gap: 4px; min-width: 0; }
+.project-row-label { font-size: 14px; line-height: 21px; color: var(--platform-muted); white-space: nowrap; }
+.project-row-values { display: flex; align-items: baseline; gap: 5px; min-height: 32px; font-variant-numeric: tabular-nums; }
+.project-row-values > strong { font-size: 24px; font-weight: 500; line-height: 1.25; }
+.project-row-values > span { font-size: 14px; white-space: nowrap; }
+.project-row-bar { display: flex; gap: 3px; width: 100%; max-width: 180px; height: 4px; margin: 4px 0 2px; }
+.project-row-bar > span { min-width: 0; }
+.project-row-rate { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; font-size: 14px; line-height: 21px; }
+.project-row-rate small, .project-row-note { color: var(--platform-muted); font-size: 14px; line-height: 21px; }
+.project-row-metric[href]:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+.project-row-metric[aria-disabled=true] { cursor: default; }
+.project-row-metric[aria-disabled=true]:hover strong { text-decoration: none; }
+.project-row-gate .project-row-values { align-items: center; }
+.project-row-gate .project-row-values > span { font-size: 16px; font-weight: 500; }
+.project-row-open { display: flex; align-items: center; justify-content: flex-end; gap: 6px; min-height: 44px; align-self: center; white-space: nowrap; font-size: 16px; font-weight: 500; }
+.project-row-open:hover { text-decoration: underline; text-underline-offset: 4px; }
+.project-catalog .catalog-toolbar { margin-bottom: 12px; }
+.project-grade-toolbar { position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.project-grade-filters { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+.project-grade-filter-label { margin-right: 12px; font-size: 14px; color: var(--platform-muted); }
+.project-grade-filters button { display: flex; align-items: baseline; justify-content: center; gap: 8px; min-height: 40px; min-width: 48px; padding: 8px 12px; font-size: 16px; border-radius: 3px; }
+.project-grade-filters button small { color: var(--platform-muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.project-grade-filters button:hover { background: #f6f6f6; }
+.project-grade-filters button[aria-pressed=true] { background: #ececec; font-weight: 600; }
+.project-grade-guide { flex-shrink: 0; font-size: 14px; }
+.project-grade-guide summary { min-height: 40px; display: flex; align-items: center; cursor: pointer; color: var(--platform-muted); list-style: none; }
+.project-grade-guide summary::-webkit-details-marker { display: none; }
+.project-grade-guide summary:hover { text-decoration: underline; text-underline-offset: 4px; }
+.project-grade-guide[open] summary { color: var(--platform-ink); }
+.project-grade-guide:not([open]) > div { display: none; }
+.project-grade-guide > div { position: absolute; z-index: 2; inset: 48px 0 auto auto; width: min(620px,100%); padding: 20px; background: #f6f6f6; }
+.trace-platform .project-grade-guide p { font-size: 14px; line-height: 1.6; color: var(--platform-muted); }
+.project-grade-guide dl { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 12px; margin: 16px 0; }
+.project-grade-guide dt { font-size: 20px; font-weight: 500; }
+.project-grade-guide dd { margin: 4px 0 0; font-size: 14px; }
+@media (max-width:1100px) {
+  .project-row { grid-template-columns: minmax(0,1fr) 64px; gap: 16px 24px; }
+  .project-row-info { grid-column: 1; grid-row: 1; }
+  .project-row-open { grid-column: 2; grid-row: 1; }
+  .project-row-metrics { grid-column: 1/-1; grid-row: 2; grid-template-columns: 80px minmax(160px,1.5fr) 1fr 1fr 110px; }
+}
+@media (max-width:760px) {
+  .project-row { grid-template-columns: minmax(0,1fr) 44px; gap: 16px 8px; }
+  .project-row-info { grid-template-columns: 44px minmax(0,1fr); gap: 4px; }
+  .project-favorite { min-width: 44px; min-height: 44px; }
+  .project-row-title { min-height: 44px; }
+  .project-row-title h2 { font-size: 18px; }
+  .project-row-open { justify-content: center; }
+  .project-row-open > span { display: none; }
+  .project-row-metrics { grid-template-columns: 1.6fr 1fr 1fr; gap: 16px 12px; }
+  .project-row-grade { grid-column: 1/-1; flex-direction: row; align-items: center; gap: 12px; }
+  .project-row-grade .project-row-values { align-items: center; }
+  .project-row-gate { grid-column: 1/-1; flex-direction: row; align-items: center; gap: 12px; }
+  .project-row-gate .project-row-values { min-height: 32px; }
+  .project-grade-toolbar { flex-direction: column; gap: 8px; }
+  .project-grade-filter-label { flex-basis: 100%; margin: 0 0 4px; }
+  .project-grade-filters { width: 100%; }
+  .project-grade-filters button { min-height: 44px; padding: 8px 10px; }
+  .project-grade-guide summary { min-height: 44px; }
+  .project-grade-guide > div { position: static; width: 100%; margin-top: 4px; }
+  .project-grade-guide dl { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}

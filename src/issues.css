@@ -1,0 +1,54 @@
+/* Same evidence vocabulary and visual hierarchy as the report. */
+.issue-detail { --issue-gap: 24px; word-break: keep-all; }
+.trace-platform .issue-detail :is(p,dd,li,a) { font-size: 16px; line-height: 1.65; overflow-wrap: anywhere; }
+.trace-platform .issue-detail .report-meta, .trace-platform .issue-detail small { font-size: 14px; line-height: 1.6; color: var(--platform-muted); }
+.issue-heading { display: grid; grid-template-columns: minmax(0,1fr) 240px; gap: 32px; align-items: start; }
+.issue-heading h2 { font-size: 28px; line-height: 1.4; font-weight: 600; margin-bottom: 8px; text-wrap: balance; }
+.issue-heading .report-meta { margin-top: 8px; }
+.issue-grade { display: grid; gap: 4px; }
+.issue-grade > span { color: var(--platform-muted); font-size: 14px; }
+.issue-grade strong { font-size: 24px; line-height: 1.4; font-weight: 500; font-variant-numeric: tabular-nums; }
+.trace-platform .issue-grade > p { font-size: 14px; color: var(--platform-muted); }
+.trace-platform .issue-scope { margin-top: 14px; }
+.issue-summary-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.1fr); gap: 32px; align-items: start; margin: 32px 0; }
+.issue-detail h3 { font-size: 24px; line-height: 1.4; font-weight: 600; margin: 0; }
+.issue-detail h4 { font-size: 20px; line-height: 1.5; font-weight: 500; margin: 0 0 12px; text-wrap: balance; }
+.issue-detail section > h3, .issue-section-heading { background: var(--platform-section); padding: 16px 24px; margin: 0 0 24px; }
+.issue-section-body { padding: 0 24px; min-width: 0; }
+.issue-detail h3 { scroll-margin-top: 80px; }
+.issue-impact p { margin-bottom: 6px; }
+.issue-detail .report-verification { grid-template-columns: 1fr 1fr; gap: 12px 20px; margin: 0; }
+.issue-detail .report-verification dd { font-size: 14px; }
+.issue-detail .issue-tabs { margin: 0 0 24px; gap: 24px; }
+.trace-platform .issue-tabs button { font-size: 16px; padding: 0; color: var(--platform-muted); }
+.trace-platform .issue-tabs button.active { color: var(--platform-ink); border-bottom-color: var(--platform-ink); }
+.issue-evidence-grid { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 32px; align-items: start; }
+.issue-evidence-grid > section { min-width: 0; }
+.issue-section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.issue-section-heading a { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+.issue-detail .report-code { margin-top: 12px; }
+.issue-detail .report-code code { font-size: 14px; }
+.issue-detail .report-flow { list-style: none; }
+.issue-secondary { margin-top: 48px; }
+.issue-detail .report-controls { margin-top: 16px; gap: 14px; }
+.issue-policy-links { display: grid; gap: 8px; margin: 16px 0 8px; }
+.issue-policy-links a, .issue-reference { display: inline-flex; align-items: center; gap: 6px; text-decoration: underline; text-underline-offset: 4px; }
+.issue-reference { margin-top: 16px; }
+.issue-prose { max-width: 900px; }
+.issue-prose .issue-section-body > .report-meta { margin-top: 16px; }
+.issue-detail .report-checks { margin-top: 20px; gap: 20px; }
+@media (max-width:1100px) {
+  .issue-heading { grid-template-columns: minmax(0,1fr) 210px; gap: 24px; }
+  .issue-summary-grid { gap: 24px; }
+  .issue-evidence-grid { grid-template-columns: minmax(0,1fr); gap: 28px; }
+}
+@media (max-width:760px) {
+  .issue-heading, .issue-summary-grid { grid-template-columns: minmax(0,1fr); gap: 20px; }
+  .issue-heading h2 { font-size: 24px; }
+  .issue-grade { grid-template-columns: minmax(0,1fr) auto; align-items: baseline; }
+  .issue-grade > p { grid-column: 1/-1; }
+  .issue-detail section > h3, .issue-section-heading { padding-inline: 16px; }
+  .issue-section-body { padding-inline: 16px; }
+  .issue-detail .report-code { padding: 16px; }
+  .issue-detail .issue-tabs { gap: 20px; }
+}

@@ -18,3 +18,18 @@ coverage/
 .vscode/*
 !.vscode/extensions.json
 .idea/
+
+# 프론트 시연·로컬 생성 파일
+tmp/
+test-results/
+playwright-report/
+*.tsbuildinfo
+.env*
+*.key
+*.p12
+*.pfx
+Thumbs.db
+.openai/
+.sites.local.json
+.taste-skill/
+taki.yml
